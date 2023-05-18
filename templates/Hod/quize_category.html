@@ -1,0 +1,87 @@
+{% extends  'base.html' %}
+{% block content %}
+<div class="content container-fluid">
+    <div class="page-header">
+       <div class="row align-items-center">
+          <div class="col">
+             <h4 class="page-title"> Exam Title</h4>
+             
+          </div>
+          
+       </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-body">
+ <form action="" method="post" enctype="multipart/form-data">
+     {% csrf_token %}
+                <div class="col-12 col-sm-6">
+                    <label  class='lbl'>Courses</label>
+                    <select class="form-group form-control" name='course'  required>
+                    <option>Select Course</option>
+                    {% for i in course %}
+                    <option value='{{i.id}}'>{{i.course}}</option>
+                    {% endfor %}
+                    </select>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <label  class='lbl'>Subjects</label>
+                    <select class="form-group form-control" name='subject'  required>
+                    <option>Select Course</option>
+                    {% for i in subject %}
+                    <option value='{{i.id}}'>{{i.subject_name}}</option>
+                    {% endfor %}
+                    </select>
+                </div>
+                {% comment %} <div class="col-12 col-sm-6">
+                    <label for="exampleFormControlTextarea1" class="form-label">Detail</label>
+                    <textarea class="form-control" name="detail" 
+                        rows="3" required></textarea>
+             </div> {% endcomment %}
+                <div class="col-12 col-sm-6">
+                    <div class="form-group">
+                    <label  class='lbl'> Image</label>
+                    <input type="file" class="form-control" name="image"   >
+                    </div>
+                </div> 
+                <div class="col-12 col-sm-6">
+                    <label for="exampleFormControlInput1" class="form-label">Question</label>
+                    <input type="text" class="form-control" name="question" required>
+                    {% comment %} <input type="text" class="form-control" name="category_id" value="{{category.id}}"   >  {% endcomment %}
+            
+                </div>
+                <div class="col-12 col-sm-6">
+                    <label for="exampleFormControlInput1" class="form-label">Option 1</label>
+                    <input type="text" class="form-control" name="option1" required>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <label for="exampleFormControlInput1" class="form-label">Option 2</label>
+                    <input type="text" class="form-control" name="option2" required>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <label for="exampleFormControlInput1" class="form-label">Option 3</label>
+                    <input type="text" class="form-control" name="option3" required>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <label for="exampleFormControlInput1" class="form-label">Option 4</label>
+                    <input type="text" class="form-control" name="option4" required>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <label for="exampleFormControlInput1" class="form-label">Level</label>
+                    <input type="text" class="form-control" name="level" required>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <label for="exampleFormControlInput1" class="form-label">Right Answer</label>
+                    <input type="text" class="form-control" name="right_opt"  required>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <label for="exampleFormControlInput1" class="form-label">Time limit </label>
+                    <input type="text" class="form-control" name="time_limit"  required>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary"> Submit</button>
+                 </div>
+                
+                
+{% endblock %}

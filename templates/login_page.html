@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+   <!-- Mirrored from preschool.dreamguystech.com/html-template/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Oct 2021 11:11:39 GMT -->
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+      <title>Preskool - Login</title>
+      <link rel="shortcut icon" href="{%static 'assets/img/favicon.png'%}">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&amp;display=swap">
+      <link rel="stylesheet" href="{%static 'assets/plugins/bootstrap/css/bootstrap.min.css'%}">
+      <link rel="stylesheet" href="{%static 'assets/plugins/fontawesome/css/fontawesome.min.css'%}">
+      <link rel="stylesheet" href="{%static 'assets/plugins/fontawesome/css/all.min.css'%}">
+      <link rel="stylesheet" href="{% static 'assets/css/style.css'%}">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+      <!-- JavaScript -->
+      <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+      <!-- CSS -->
+      <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+      <!-- Default theme -->
+      <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+      <!-- Semantic UI theme -->
+      <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+      <!-- Bootstrap theme -->
+      <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+      <!-- include a theme -->
+      <link rel="stylesheet" href="{PATH}/css/themes/default.min.css" /> 
+      
+   <style>
+      i#togglePassword {margin-left: 18rem;}
+      .alertify-notifier.ajs-top {
+         top: 90px;
+     }
+     .bord {background-color: #002951;}
+   </style>
+   </head>
+   <body>
+      <div class="container-fluid">
+      <div class="bord">
+         <nav class="navbar navbar-expand-lg  ">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">School Management System</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  
+                  {% comment %} <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                     Signup
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="{% url 'signup_as_a_student' %}">Signup as a Student</a></li>
+                      <li><a class="dropdown-item" href="{% url 'signup_as_a_staff' %}">Signup as a Staff Member</a></li>
+                      
+                    </ul>
+                  </li> {% endcomment %}
+
+                  <li>
+                  <div class="dropdown">
+           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" style=" background: transparent;border: none;" >Sign up<span class="caret"></span></button>
+            {% comment %} <ul class="dropdown-menu">
+               <li><a href="#">HTML</a></li>
+               <li><a href="#">CSS</a></li>
+               <li><a href="#">JavaScript</a></li>
+            </ul> {% endcomment %}
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+               <li><a class="dropdown-item" href="{% url 'signup_as_a_student'%}">Signup as a Student</a></li>
+               <li><a class="dropdown-item" href="{% url 'signup_as_a_admin'%}">Signup as a admin</a></li>
+               {% comment %} <li><a class="dropdown-item" href="{% url 'signup_as_a_staff' %}">Signup as a Staff Member</a></li> {% endcomment %}
+               {% comment %} {% url 'signup_as_a_student' %} {% endcomment %}
+             </ul>
+     </div>
+      </li>
+                  
+                </ul>
+                
+              </div>
+            </div>
+          </nav>
+      </div>
+      </div>
+      <div class="main-wrapper login-body">
+         <script>
+            {% for flashmsg in messages %}
+               alertify.set('notifier','position', 'top-center');
+               alertify.error('{{flashmsg}}');
+            {% endfor %}
+         </script> 
+         <div class="login-wrapper">
+            <div class="container">
+               <div class="loginbox">
+                  <div class="login-left">
+                     <img class="img-fluid" src="{% static 'assets/img/ss2.jpg'%}" alt="Logo">
+                  </div>
+               
+                  <div class="login-right">
+                     <div class="login-right-wrap">
+                        <h1>Login</h1>
+                        <p class="account-subtitle">Access to our dashboard</p>
+                        <form action="{% url 'doLogin' %}" method="post">
+                          {% csrf_token %}
+                          
+
+                           <div class="form-group">
+                              <input class="form-control" type="text" placeholder="Email" name='email' required>
+                           </div>
+                           <div class="row">
+                              <div class="form-group">
+                                 <input class="form-control" type="password"  placeholder="Password"   id="id_password" name='password' required >
+                                 <i class="far fa-eye" id="togglePassword" ></i>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <button class="btn btn-primary btn-block" type="submit">Login</button>
+                           </div>
+                           <div class="text-center dont-have">Forgot Password? <a href=" {% url 'reset_password' %} ">Password</a>
+                           </div>
+                        </form>
+                       </div>
+                  </div>
+               </div>
+
+            </div>
+         </div>
+      </div>
+      <script src="{%static 'assets/js/jquery-3.6.0.min.js'%}"></script>
+      <script src="{%static 'assets/js/popper.min.js'%}"></script>
+      <script src="{%static 'assets/plugins/bootstrap/js/bootstrap.min.js'%}"></script>
+      <script src="{%static 'assets/js/script.js'%}"></script>
+      <script>
+         const togglePassword = document.querySelector('#togglePassword');
+         const password = document.querySelector('#id_password');
+
+         togglePassword.addEventListener('click', function (e) {
+            // toggle the type attribute
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            // toggle the eye slash icon
+            this.classList.toggle('fa-eye-slash');
+         });
+      </script>
+      <script>
+         var firebaseConfig = {
+             apiKey: "AIzaSyDyPocj-7kA9CKYeVSwG5KM2N_5_rwZWk0",
+             authDomain: "fir-d4301.firebaseapp.com",
+             databaseURL: "https://fir-d4301.firebaseio.com",
+             projectId: "fir-d4301",
+             storageBucket: "fir-d4301.appspot.com",
+             messagingSenderId: "778917612722",
+             appId: "1:778917612722:web:90c989b3d2f79d414b4dab",
+             measurementId: "G-JDW4RFR844"
+           };
+           firebase.initializeApp(firebaseConfig);
+           firebase.analytics();
+     
+           const messaging = firebase.messaging();
+           console.log(messaging.getToken())
+             messaging.getToken({ vapidKey: 'AAAAam0Fww4:APA91bEa44mu2qCtF-BVe0qWdB7li6Wu5m6-PqobuGLf_bc6sOZTWfCTWaZL8d_qnKX3_f-TGnAndc6ARfQ43XHiMoceo-MFTWwcrZpWuhAx2nOWXiNJV4jS_bh7xXbYki4gJvsEXnjk' }).then((currentToken) => {
+                 if (currentToken) {
+     
+                 console.log(currentToken)
+                 } else {
+                 console.log('No registration token available. Request permission to generate one.');
+     
+                 }
+             }).catch((err) => {
+                 console.log('An error occurred while retrieving token. ', err);
+             });
+     
+     
+             messaging
+                 .requestPermission()
+                 .then(function () {
+                 console.log("Notification permission granted.");
+                 return messaging.getToken()
+                 })
+                 .catch(function (err) {
+                 console.log("Unable to get permission to notify.", err);
+                 });
+     
+     
+             messaging.onMessage((payload) => {
+                 console.log('Message received. ', payload);
+     
+             });
+     </script>
+   </body>
+   <!-- Mirrored from preschool.dreamguystech.com/html-template/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Oct 2021 11:11:40 GMT -->
+</html>

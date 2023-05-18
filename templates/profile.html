@@ -1,0 +1,94 @@
+{% extends 'base.html'%}
+{% block content %} 
+<div class="row">
+    <div class="col-sm-12">
+    <div class="card">
+    <div class="card-body">
+        
+ <form action="{% url 'profile_update'%}" method="post" enctype="multipart/form-data">
+     {% csrf_token %}
+    <div class="col-12">
+    <h5 class="form-title"><span>Profile Update</span></h5>
+    </div>
+    {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == 'error'%}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{message}}
+            
+            </div>
+        {% endif %}
+        {% endfor %}
+    {% endif %}
+    {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == 'success'%}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{message}}
+            
+            </div>
+        {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    
+    <div class="col-12 col-sm-6">
+    <div class="form-group">
+  
+    <label class='lbl'>First Name</label>
+  
+    <input type="text" class="form-control" name="first_name" value={{user.first_name}}>
+    </div>
+    </div>
+    <div class="col-12 col-sm-6">
+    <div class="form-group">
+
+    <label class='lbl'>Last Name</label>
+    
+    <input type="text" class="form-control" name="last_name" value={{user.last_name}}>
+    </div>
+    </div>
+    <div class="col-12 col-sm-6">
+    <div class="form-group">
+    
+    <label class='lbl'>Username</label>
+   
+    <input type="text" class="form-control" name="username" value={{user.username}}>
+    </div>
+    </div>
+    <div class="col-12 col-sm-6">
+    <div class="form-group">
+    
+    <label class='lbl'>Email</label>
+  
+    <input type="email" class="form-control" name="email" value={{user.email}}>
+    </div>
+    </div>
+    <div class="col-12 col-sm-6">
+    <div class="form-group">
+    
+    <label class='lbl'>profile pic</label>
+    
+    <input type="file" class="form-control" name="profile_pic" >
+    </div>
+    </div>
+    <div class="col-12 col-sm-6">
+    <div class="form-group">
+
+  
+    <label class='lbl'>Password</label>
+
+    <input type="text" class="form-control" placeholder="Fill if you want to change password" name="password" >
+    </div>
+    </div>
+    <div class="col-12">
+    <button type="submit" class="btn btn-primary">Update Profile</button>
+    </div>
+    </div>
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    
+{% endblock%} 

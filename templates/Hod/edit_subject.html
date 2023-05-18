@@ -1,0 +1,54 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<div class="row">
+    <div class="col-sm-12">
+    <div class="card">
+    <div class="card-body">
+
+        
+ <form action="{% url 'update_subject' %}" method="post" enctype="multipart/form-data">
+     {% csrf_token %}
+    <div class="col-12">
+    <h5 class="form-title"><span>Edit Subject</span></h5>
+    </div>
+    
+    <div class="col-12 col-sm-6">
+    
+    <div class="col-12 col-sm-6">
+    <div class="form-group">
+    <label  class='lbl'>Subject Name</label>
+    <input type="text" class="form-control" name="subject_name" value="{{subject.subject_name}}" >
+    <input type="text" class="form-control" name="subject_id" value="{{subject.id}}" hidden > 
+    </div>
+    </div>
+    <div class="col-12 col-sm-6">
+        <label  class='lbl'>Courses</label>
+        <select class="form-group" name='course_id'>
+        <option>Select Course</option>
+            {% for i in course %}
+                <option value='{{i.id}}'>{{i.course}}</option>
+            {% endfor %}
+        
+        </select>
+        </div>
+        <div class="col-12 col-sm-6">
+        <label  class='lbl'>Teacher</label>
+        <select class="form-group" name='staff_id'>
+        <option>Select Staff</option>
+        {% for i in teacher  %}
+            <option value='{{i.id}}'>{{i.user.first_name}} {{i.user.last_name}}</option>
+        {% endfor %}
+                
+        </select>
+        </div>
+    <div class="col-12">
+    <button type="submit" class="btn btn-primary">Update Subject</button>
+    </div>
+    </div>
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}

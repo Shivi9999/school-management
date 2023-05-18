@@ -1,0 +1,76 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="container mt-4">
+    <form action="" method="POST"> 
+        {% csrf_token %}
+        <script>
+         {% for flashmsg in messages %}
+            alertify.set('notifier','position', 'top-right');
+            alertify.success('{{flashmsg}}');
+         {% endfor %}
+      </script> 
+        <div class="col-12 col-sm-6">
+            <label  class='lbl'>Student Name</label>
+            <select class="form-group form-control" name='student_name'  required>
+                <option>Select Student Name</option>
+                {% for i in student_name %}
+                <option value='{{i.id}}'>{{i.admin}}</option>
+                {% endfor %}
+            </select>
+         </div> 
+         {% comment %} <div class="col-12 col-sm-6">
+            <label  class='lbl'>admin Name</label>
+            <select class="form-group form-control" name='admin'  required>
+                <option>Select admin Name</option>
+                {% for i in admin %}
+                <option value='{{i.id}}'>{{i.admin}}</option>
+                {% endfor %}
+            </select>
+         </div>  {% endcomment %}
+         <div class="col-12 col-sm-6">
+            <label  class='lbl'>Book Name</label>
+           
+           <select class="form-group form-control" name='book_name'   required>
+                <option>Select bookname</option>
+                {% for i in bookname %}
+                <option value='{{i.id}}'>{{i.book_name}}</option>
+                {% endfor %}
+            </select> 
+         </div> 
+         <div class="col-12 col-sm-6">
+            <label  class='lbl'>Book Code</label>
+           
+           <select class="form-group form-control" name='book_code'   required>
+                <option>Select bookcode</option>
+                {% for i in bookname %}
+                <option value='{{i.id}}'>{{i.book_code}}</option>
+                {% endfor %}
+            </select> 
+                
+                
+         </div> 
+         <div class="col-12 col-sm-6">
+            <div class="form-group" >
+               <label  class='lbl'> Contact Number </label>
+               <input type="text" class="form-control" name="contact" placeholder="Enter Contact Number"  required>
+               <input type="text" class="form-control" name="book_id"  value="{% for i in bookname %} {{i.id}}{% endfor %}" hidden>
+            </div>
+         </div>
+       
+         {% comment %} <div class="col-12 col-sm-6">
+            <div class="form-group" >
+               <label  class='lbl'> Issued Date</label>
+               <input type="date" class="form-control" name="issue_date"  required>
+            </div>
+         </div> {% endcomment %}
+         {% comment %} <div class="col-12 col-sm-6">
+            <div class="form-group" >
+               <label  class='lbl'> Expiry Date</label>
+               <input type="date" class="form-control" name="expiry_date"  required>
+            </div>
+         </div> {% endcomment %}
+         <div class="col-12">
+            <button type="submit" class="btn btn-primary">Issue Book</button>
+         </div>
+
+{% endblock %}      

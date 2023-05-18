@@ -1,0 +1,93 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="content container-fluid">
+    <div class="page-header">
+       <div class="row align-items-center">
+          <div class="col">
+             <h4 class="page-title">Add Teacher</h4>
+             
+          </div>
+          
+       </div>
+    </div>     
+<form action="{% url 'add_teacher'%}" method="post" enctype="multipart/form-data">
+<div class="row">
+<div class="col-sm-12">
+<div class="card">
+<div class="card-body">
+
+        
+ 
+    
+    {% comment %} <div class="col-12">
+    <h5 class="form-title"><span>Add Teacher</span></h5>
+    </div> {% endcomment %}
+    
+{% csrf_token %}  
+<div class="col-12 col-sm-6">
+    <div class="form-group">
+      <label class='lbl'>First Name</label>
+      <input type="text" class="form-control" name="first_name" required>
+    </div>
+  </div>
+  <div class="col-12 col-sm-6">
+    <div class="form-group">
+      <label class='lbl'>Last Name</label>
+      <input type="text" class="form-control" name="last_name" required>
+    </div>
+  </div>
+  <div class="col-12 col-sm-6">
+    <div class="form-group">
+      <label class='lbl'>Username</label>
+      <input type="text" class="form-control" name="username" required>
+    </div>
+  </div>
+  <div class="col-12 col-sm-6">
+    <label class='lbl'>Gender</label>
+    <select class="form-group form-control" name='Gender' required>
+      <option>Select Gender</option>
+      <option>Male</option>
+      <option>Female</option>
+      <option>Other</option>
+    </select>
+  </div>
+  <div class="col-12 col-sm-6">
+    <div class="form-group">
+      <label class='lbl'>profile pic</label>
+      <input type="file" class="form-control" name="profile_pic" required>
+    </div>
+  </div>
+  <div class="col-12 col-sm-6">
+    <div class="form-group">
+      <label class='lbl'>Email</label>
+      <input type="email" class="form-control" name="email" required>
+    </div>
+  </div>
+  <div class="col-12 col-sm-6">
+    <div class="form-group">
+      <label class='lbl'>Password</label>
+      <input type="password" class="form-control" name="password" required>
+    </div>
+  </div>
+  <div class="col-12 col-sm-6">
+    <div class="form-group">
+      <label class='lbl'>Address</label>
+      <input type="text" class="form-control" name="address" required>
+    </div>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Add Teacher</button>
+  </div>
+  </div>
+  </form>
+  </div>
+  </div>
+  </div>
+  </div>
+<script>
+    {% for flashmsg in messages %}
+        alertify.set('notifier','position', 'top-right');
+        alertify.error('{{flashmsg}}');
+    {% endfor %}
+    </script> 
+{% endblock %}

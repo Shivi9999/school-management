@@ -1,0 +1,134 @@
+{% extends 'base.html'%}
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == 'success'%}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{message}}
+            
+            </div>
+        {% endif %}
+        {% endfor %}
+    {% endif %}
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row align-items-center">
+        <div class="col">
+            <h4 class="page-title">View Attendance </h4>
+        </div>
+        </div>
+    </div>
+    {% if action is None %}
+    <form action="?action=view_attendence" method="post">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+            <div class="col-12">
+                <h5 class="form-title">
+                <span> View Attendance</span>
+                </h5>
+            </div> 
+            {% csrf_token %}
+             
+            <div class="col-12 col-sm-6">
+                <label class='lbl'>Subject</label>
+                <select class="form-group" name='subject_id' required >
+                <option>Select Subject</option> {% for i in subject %} <option value='{{i.id}}'>{{i.subject_name}}</option> {% endfor %}
+                </select>
+            </div>
+            <div class="col-12 col-sm-6">
+                <label class='lbl'>Session_year</label>
+                <select class="form-group" name='session_year_id' required>
+                <option>Select Session</option> {% for i in session_year %} <option value='{{i.id}}'>{{i.session_start_year}} {{i.session_end_year}}</option> {% endfor %}
+                </select>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="form-group">
+                <label  class='lbl'>Attendence date</label>
+                <input type="date" class="form-control" name="attendence_date" >
+              </div>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">View Attendence</button>
+            </div>
+        </div>
+      </div>
+    </div>
+    </form> 
+    {% else %}
+    <form action="?action=view_attendence" method="post">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card">
+             <div class="card-body"> {% comment %} <div class="col-12">
+                    <h5 class="form-title">
+                    <span>Add Subject</span>
+                    </h5>
+                </div> {% endcomment %} 
+                {% csrf_token %} 
+               
+                <div class="col-12 col-sm-6">
+                    <label class='lbl'>Subject</label>
+                    <select class="form-group" name='subject_id' disabled >
+                 
+                    <option value='{{get_subject.id}}'>{{get_subject}}</option> 
+                    </select>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <label class='lbl'>Session_year</label>
+                    <select class="form-group" name='session_year_id' disabled>
+                    <option value='{{get_session_year.id}}'>{{get_session_year}} </option> 
+                    </select>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <div class="form-group">
+                        <label class='lbl'>Attendance Date </label>
+                        <input type="date" class="form-control" name="attendence_date" value={{attendence_date}} disabled>
+                    </div>
+                </div>
+                {% for i in students %}
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1" value="{{i.id}}" name="student_id">
+                        <label class="form-check-label" for="exampleCheck1">{{i.admin.first_name}}{{i.admin.last_name}}</label>
+                    </div>
+                {% endfor%}
+                <div class="row">
+                    <div class="col-sm-12">
+                       <div class="card card-table">
+                          <div class="card-body">
+                             <div class="table-responsive">
+                                <table  id="table_id" class="table table-hover table-center mb-0 ">
+                                  
+                                  <thead>
+                                      <tr>
+                                         <th>ID</th>
+                                         <th>  Name</th>
+                                         <th> Email</th>
+                                         
+                                      </tr>
+                                   </thead>
+                                   <tbody>
+                                    {% for k in attendence_report %}
+                                        <tr>
+                                            <td>{{k.student_id.admin.id}}</td>
+                                            <td>{{k.student_id.admin.first_name}}   </td>
+                                            <td>{{k.student_id.admin.email}}   </td>
+                                            
+                                        </tr>
+                                  {% endfor %}
+                                   </tbody>
+                                </table>
+                             </div> 
+                          </div>
+                       </div>
+              </div>
+            </div>
+         </div>
+        </form>
+        </div>
+    {% endif %}
+    
+
+</div>
+{% endblock %}

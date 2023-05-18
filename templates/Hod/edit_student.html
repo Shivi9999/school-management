@@ -1,0 +1,92 @@
+{%extends 'base.html'%}
+{% block content %}
+
+<div class="row">
+    <div class="col-sm-12">
+    <div class="card">
+    <div class="card-body">
+
+        
+ <form action="{% url 'update_student' %}" method="post" enctype="multipart/form-data">
+     {% csrf_token %}
+    <div class="col-12">
+    <h5 class="form-title"><span>Edit Student</span></h5>
+    </div>
+    
+    <div class="col-12 col-sm-6">
+    <div class="form-group">
+    <label  class='lbl'>profile pic</label>
+    <input type="file" class="form-control" name="profile_pic" >
+    <input type="text" class="form-control" name="student_id" value="{% for j in student %} {{j.user.id}}{% endfor %}" hidden > 
+    </div>
+    </div>
+    <div class="col-12 col-sm-6">
+    <div class="form-group">
+    <label  class='lbl'>First Name</label>
+    <input type="text" class="form-control" name="first_name" value="{% for j in student %} {{j.user.first_name}}{% endfor %}" >
+    </div>
+    </div>
+    <div class="col-12 col-sm-6">
+    <div class="form-group">
+    <label  class='lbl'>Last Name</label>
+    <input type="text" class="form-control" name="last_name" value="{% for j in student %} {{j.user.last_name}}{% endfor %}" >
+    </div>
+    </div>
+    <div class="col-12 col-sm-6">
+    <div class="form-group" >
+    <label  class='lbl'>Username</label>
+    <input type="text" class="form-control" name="username" value="{% for j in student %}{{j.user.user_name}} {% endfor%}" >
+    </div>
+    </div>
+
+    <div class="col-12 col-sm-6">
+    <label  class='lbl'>Gender</label>
+    <select class="form-group" name='Gender' required>
+    <option>Select Gender</option>
+    <option>Male</option>
+    <option>Female</option>
+    <option>Other</option>
+    </select>
+    </div>
+    <div class="col-12 col-sm-6">
+    <label  class='lbl'>Courses</label>
+    <select class="form-group form-control" name='course_id' required>
+    <option>Select Course</option>
+    {% for j in course %}
+     <option value='{{j.id}}'>{{j.course}}</option>
+    {% endfor %}
+   
+    </select>
+    </div>
+   
+    
+
+    <div class="col-12 col-sm-6">
+    <div class="form-group">
+    <label  class='lbl'>Email</label>
+    <input type="email" class="form-control" name="email" value="{% for j in student %} {{j.user.email}} {% endfor%}" >
+    </div>
+    </div>
+    <div class="col-12 col-sm-6">
+    <div class="form-group">
+    <label  class='lbl'>Password</label>
+    <input type="text" class="form-control"  name="password" placeholder="If you only want to change password" >
+    </div>
+    </div>
+    <div class="col-12 col-sm-6">
+    <div class="form-group">
+    <label  class='lbl'>Address</label>
+    <input type="text" class="form-control" name="address"  value="{% for j in student %}{{j.address}}{% endfor%}">
+    </div>
+    </div>
+   
+    <div class="col-12">
+    <button type="submit" class="btn btn-primary">Update Student</button>
+    </div>
+    </div>
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}

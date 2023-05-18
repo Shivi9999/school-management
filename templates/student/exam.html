@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+
+{% comment %} {% block content %}
+{% comment %} <div class='que'>
+    <input type="text" class="form-control" name="course_id" value="{% for j in data %}{{j.id}}{% endfor %}" > 
+</div> {% endcomment %}
+<h3 class='my-4'> Exam pannel</h3>
+<div class='row'>
+    {% comment %} <div class="form-group">
+        <label  class='lbl'>Course Name</label>
+        <input type="text" class="form-control" value="{% for i in student %}{{i.course_id}}{% endfor %}" >
+        
+     </div> {% endcomment %}
+     {% for category in student %}
+     <div class="col-md-4">
+         <div class='card'>
+                 {% comment %} <a href=""><img src="{{category.image}}" class="card-img-top" alt="{{category.title}}"></a> {% endcomment %}
+             
+             <div class='card-body'>
+                 <h5 class='card-title'><a href="{% url 'question'  %}">{{category.course_id}}</a></h5>
+
+{% comment %}             
+                <div class='card-body'>
+                    <h5 class='card-title'><a href="">{% for i in subject %} {{i.subject_name}}  {% endfor %}</a></h5>
+                </div> {% endcomment %}
+                {% comment %} <label  class='lbl'>Subject Name</label>
+                <input type="text" class="form-control" value="{% for i in subject %}{{i.subject_name}}{% endfor %}" >
+                
+         </div> {% endcomment %}
+     </div>
+     
+    
+</div>
+ <script>
+        $(document).ready(function () {
+            $(".card-title").click(function () {
+                alert("Your time limit is 1 minute per Question");
+            });
+        });
+
+        $(document).ready(function () {
+            $(".card-img-top").click(function () {
+                alert("Your time limit is 1 minute per Question");
+            });
+        });
+        
+    </script> 
+    
+{% endfor %}
+</div>
+{% endblock %} 

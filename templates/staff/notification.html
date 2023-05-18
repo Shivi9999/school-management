@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if messages %}
+        {% for message in messages %}
+        {% if message.tags == 'success'%}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{message}}
+            
+            </div>
+        {% endif %}
+       {% endfor %}
+{% endif %}
+<div class="content container-fluid">
+    <div class="page-header">
+       <div class="row align-items-center">
+          <div class="col">
+             <h3 class="page-title">Notifications</h3>
+             <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'staff_home'%}">Dashboard</a></li>
+                <li class="breadcrumb-item active">Notifications</li>
+             </ul>
+          </div>
+          <div class="col-auto text-right float-right ml-auto">
+             {% comment %} <a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a> {% endcomment %}
+            
+          </div>
+       </div>
+    </div>
+<form method="POST" enctype="multipart/form-data" ></form>
+
+<div class="row">
+    <div class="col-sm-12">
+       <div class="card card-table">
+          <div class="card-body">
+             <div class="table-responsive">
+                <table  id="table_id" class="table table-hover table-center mb-0 ">
+                  
+                  <thead>
+                      <tr>
+                         <th>  Message</th>
+                         <th>  Action</th>
+                         
+                      </tr>
+                   </thead>
+                   <tbody>
+                    {% for k in notification %}
+                        <tr>
+                        <td>{{k.message}}</td>
+                        <div class='actions'>
+                            {% if k.status == 0 %}
+                                <td><a href="mark_as_done/{{k.id}}" class='btn btn-danger'> Mark as done</a></td>
+                            {% else %}
+                              <td><button class='btn btn-danger' disabled='disabled'> Mark as done</button></td>
+                            {% endif %}
+                        </div>
+                            
+                  </tr>
+                  {% endfor %}
+                   </tbody>
+                </table>
+             </div> 
+          </div>
+       </div>
+       
+
+{% endblock %}

@@ -1,0 +1,208 @@
+{%  extends 'base.html' %}
+{% block content%}
+ <div class="content container-fluid">
+    <div class="page-header">
+       <div class="row">
+          <div class="col-sm-12">
+             <h3 class="page-title">Welcome {{user.first_name}} {{user.last_name}}</h3>
+             <ul class="breadcrumb">
+                <li class="breadcrumb-item active">Dashboard</li>
+             </ul>
+          </div>
+       </div>
+    </div>
+    <div class="row">
+       <div class="col-xl-3 col-sm-6 col-12 d-flex">
+          <div class="card bg-one w-100">
+             <div class="card-body">
+                <div class="db-widgets d-flex justify-content-between align-items-center">
+                   <div class="db-icon">
+                      <i class="fas fa-user-graduate"></i>
+                   </div>
+                   
+                          <a href="#"><div class="info-box">
+                           {% comment %} <span class="info-box-icon bg-aqua"><i class="fa fa-users"></i></span> {% endcomment %}
+                            <div class="info-box-content"> 
+                            
+                             
+                            <h3 class='mn'><span class="info-box-number">{{student_count}}</span></h3>
+                            <h6 class='mn'><span class="info-box-text">Student</span></h6>
+                            
+                           </div>
+                         </div></a>
+                       
+                       
+                   {% comment %} <div class="db-info">
+                      <h3>50055</h3>
+                      <h6>Students</h6>
+                   </div> {% endcomment %}
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="col-xl-3 col-sm-6 col-12 d-flex">
+          <div class="card bg-two w-100">
+             <div class="card-body">
+                <div class="db-widgets d-flex justify-content-between align-items-center">
+                   <div class="db-icon">
+                     <i class="fas fa-chalkboard-teacher"></i>
+                   </div>
+                   <div class="db-info">
+                      <h3>{{staff_count}}</h3>
+                      <h6>Staff</h6>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="col-xl-3 col-sm-6 col-12 d-flex">
+          <div class="card bg-three w-100">
+             <div class="card-body">
+                <div class="db-widgets d-flex justify-content-between align-items-center">
+                   <div class="db-icon">
+                      <i class="fas fa-graduation-cap"></i>
+                   </div>
+                   <div class="db-info">
+                      <h3>{{course_count}}</h3>
+                      <h6>Courses</h6>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="col-xl-3 col-sm-6 col-12 d-flex">
+          <div class="card bg-four w-100">
+             <div class="card-body">
+                <div class="db-widgets d-flex justify-content-between align-items-center">
+                   <div class="db-icon">
+                      <i class="fas fa-file-invoice-dollar"></i>
+                   </div>
+                   <div class="db-info">
+                      <h3>{{subject_count}}</h3>
+                      <h6>Subject</h6>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+    
+    
+   
+
+<div class="row">
+   <div class="col-md-12 col-lg-6">
+      <div class="card card-chart">
+         <div class="card-header">
+            <div class="row align-items-center">
+               <div class="col-6">
+                  <h5 class="card-title">Revenue</h5>
+               </div>
+               <div class="col-6">
+                  <ul class="list-inline-group text-right mb-0 pl-0">
+                     <li class="list-inline-item">
+                        <div class="form-group mb-0 amount-spent-select">
+                           <select class="form-control form-control-sm">
+                              <option>Today</option>
+                              <option>Last Week</option>
+                              <option>Last Month</option>
+                           </select>
+                        </div>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <div class="card-body">
+            <div id="chart"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12 col-lg-6">
+      <div class="card card-chart">
+         <div class="card-header">
+            <div class="row align-items-center">
+               <div class="col-6">
+                  <h5 class="card-title">Number of Students</h5>
+               </div>
+               <div class="col-6">
+                  <ul class="list-inline-group text-right mb-0 pl-0">
+                     <li class="list-inline-item">
+                        <div class="form-group mb-0 amount-spent-select">
+                           <select class="form-control form-control-sm">
+                              <option>Today</option>
+                              <option>Last Week</option>
+                              <option>Last Month</option>
+                           </select>
+                        </div>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+        
+         <div class="card-body">
+            <div id="student"></div>
+         </div>
+      </div>
+   </div>
+</div>
+         
+        
+        
+{%include 'includes/chart.html' %}
+<section class="container-fluid">
+   <div class="row" id="googlemaps">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.1430815156355!2d75.85712957448379!3d22.685716928816504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fcf1282909d9%3A0x8c847928267a7468!2sSai%20Ram%20Plaza%2C%20Mangal%20Nagar%20Road%2C%20Mangal%20Nagar%2C%20Indore%2C%20Madhya%20Pradesh%20452014!5e0!3m2!1sen!2sin!4v1684235308511!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+   </div>
+</section>
+
+<script>
+   var firebaseConfig = {
+       apiKey: "AIzaSyDyPocj-7kA9CKYeVSwG5KM2N_5_rwZWk0",
+       authDomain: "fir-d4301.firebaseapp.com",
+       databaseURL: "https://fir-d4301.firebaseio.com",
+       projectId: "fir-d4301",
+       storageBucket: "fir-d4301.appspot.com",
+       messagingSenderId: "778917612722",
+       appId: "1:778917612722:web:90c989b3d2f79d414b4dab",
+       measurementId: "G-JDW4RFR844"
+     };
+     firebase.initializeApp(firebaseConfig);
+     firebase.analytics();
+
+     const messaging = firebase.messaging();
+     console.log(messaging.getToken())
+       messaging.getToken({ vapidKey: 'AAAAam0Fww4:APA91bEa44mu2qCtF-BVe0qWdB7li6Wu5m6-PqobuGLf_bc6sOZTWfCTWaZL8d_qnKX3_f-TGnAndc6ARfQ43XHiMoceo-MFTWwcrZpWuhAx2nOWXiNJV4jS_bh7xXbYki4gJvsEXnjk' }).then((currentToken) => {
+           if (currentToken) {
+
+           console.log(currentToken)
+           } else {
+           console.log('No registration token available. Request permission to generate one.');
+
+           }
+       }).catch((err) => {
+           console.log('An error occurred while retrieving token. ', err);
+       });
+
+
+       messaging
+           .requestPermission()
+           .then(function () {
+           console.log("Notification permission granted.");
+           return messaging.getToken()
+           })
+           
+           .catch(function (err) {
+           console.log("Unable to get permission to notify.", err);
+           });
+
+
+       messaging.onMessage((payload) => {
+           console.log('Message received. ', payload);
+
+       });
+</script>
+
+{% endblock %} 
+      

@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<script>
+    {% for flashmsg in messages %}
+       alertify.set('notifier','position', 'top-right');
+       alertify.success('{{flashmsg}}');
+    {% endfor %}
+ </script>
+<div class="content container-fluid">
+    <div class="page-header">
+       <div class="row align-items-center">
+          <div class="col">
+             <h4 class="page-title">Intimation Letter </h4>
+             
+          </div>
+          
+       </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-body">
+<form action="" method="POST" >
+     {% csrf_token %}
+         {% comment %} <div class="col-12 col-sm-6">
+               <div class="form-group">
+                     <label  class='lbl'> Name</label>
+                     <input type="text" class="form-control" name="name"  required >
+               </div>
+         </div> {% endcomment %}
+         <div class="col-12 col-sm-6">
+            <div class="form-group">
+               <label  class='lbl'> Email</label>
+               <input type="text" class="form-control" name="email"  required >
+            </div>
+         </div>
+         <div class="col-12 col-sm-6">
+            <div class="form-group">
+               <label  class='lbl'> subject</label>
+               <input type="text" class="form-control" name="subject"  required >
+            </div>
+         </div>
+         <div class="col-12 col-sm-6">
+            <div class="form-group">
+               <label  class='lbl'> Message</label>
+               <textarea class="form-control" style='height:258px'  name="message"  required></textarea>
+            </div>
+         </div>
+         <div class="col-12">
+            <button type="submit" class="btn btn-primary">Send  Mail</button>
+         </div>
+    </form>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="sparkline13-list">
+                <div class="sparkline13-hd">
+                    <div class="main-sparkline13-hd">
+                        <h1 style="padding:10px 0 10px 14px;">Intimation Letter</h1>
+                    </div>
+                </div>
+                <div class="sparkline13-graph">
+                    <div class="datatable-dashv1-list custom-datatable-overright" style="border: 3px solid #475b6d;border-radius: 5px;">
+                        
+                        <div class="row">
+                            <br>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <center><img src="{% static 'assets/img/logo1.png'%}" style="height: 100px;"></center>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                <div class="login-horizental">
+                                    <center><h2>Cyber Impilses Software Solustions </h2>
+                                    indore<br>
+                                    <b>Email:</b>cyberimpulses@gmail.com, <b>Tel:</b> 755697800<p></p></center>
+                                </div>
+                            </div>
+                        </div>
+                        <hr style="margin: 0 15px 0px 15px;">
+                        <div class="row" style="margin-right: 15px;margin-left: 15px;"><br>
+                            <center><h3>Intimation Letter</h3></center>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                <b>Subject: </b>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                This is an example of a intimation letter for a student.
+                            </div><br>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        </div>
+                        <br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

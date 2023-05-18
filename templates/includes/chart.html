@@ -1,0 +1,100 @@
+<script>
+    $(document).ready(function() {
+        var options = {
+            series: [{{student_count}}, {{staff_count}}, {{course_count}}, {{subject_count}}],
+            chart: {
+            height: 350,
+            width: '100%',
+            type: 'pie',
+          },
+          labels: [' Students', 'Staff', 'Courses', ' Subjects'],
+          responsive: [{
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 200
+              },
+              legend: {
+                position: 'bottom'
+              }
+            }
+          }]
+          };
+  
+          var chart = new ApexCharts(document.querySelector("#chart"), options);
+          chart.render();
+        
+        
+      
+    
+        // Bar chart
+        
+        if ($('#student').length > 0) {
+        var optionsBar = {
+            chart: {
+                type: 'bar',
+                height: 350,
+                width: '100%',
+                stacked: true,
+                toolbar: {
+                    show: false
+                },
+            },
+            dataLabels: {
+                enabled: false
+            },
+            plotOptions: {
+                bar: {
+                    columnWidth: '45%',
+                }
+            },
+            series: [{
+                name: "Boys",
+                color: '#fdbb38',
+                data: [{{student_gender_male}}],
+            }, {
+                name: "Girls",
+                color: '#19affb',
+                data: [{{student_gender_female}}],
+            }],
+            labels: [2022,2023],
+            xaxis: {
+                labels: {
+                    show: false
+                },
+                axisBorder: {
+                    show: false
+                },
+                axisTicks: {
+                    show: false
+                },
+            },
+            yaxis: {
+                axisBorder: {
+                    show: false
+                },
+                axisTicks: {
+                    show: false
+                },
+                labels: {
+                    style: {
+                        colors: '#777'
+                    }
+                }
+            },
+            title: {
+                text: '',
+                align: 'left',
+                style: {
+                    fontSize: '18px'
+                }
+            }
+    
+        }
+      
+        var chartBar = new ApexCharts(document.querySelector('#student'), optionsBar);
+        chartBar.render();
+        }
+      
+    });
+</script>

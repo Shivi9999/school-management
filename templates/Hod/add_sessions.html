@@ -1,0 +1,51 @@
+{% extends 'base.html'%}
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == 'success'%}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{message}}
+            
+            </div>
+        {% endif %}
+        {% endfor %}
+    {% endif %}
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+             <h4 class="page-title">Add Sessions</h4>
+                 
+            </div>
+              
+        </div>
+    </div>
+
+<form action="{% url 'add_sessions'%}" method="post" >
+<div class="row">
+<div class="col-sm-12">
+<div class="card">
+<div class="card-body">
+{% comment %} <div class="col-12">
+<h5 class="form-title"><span>Add Sessions</span></h5>
+</div> {% endcomment %}
+<div class="col-12 col-sm-6">
+{% csrf_token %}
+<div class="form-group">
+<label  class='lbl'>Session_year_start </label>
+<input type="date" class="form-control" name="session_start_year"  required>
+</div>
+</div>
+<div class="col-12 col-sm-6">
+<div class="form-group">
+<label  class='lbl'>Session_year_end </label>
+<input type="date" class="form-control" name="session_end_year"  required>
+</div>
+</div>
+
+<div class="col-12">
+<button type="submit" class="btn btn-primary">Add Sessions</button>
+</div>
+</div>
+</form>
+{% endblock %}

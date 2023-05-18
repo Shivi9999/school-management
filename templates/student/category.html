@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static  %}
+
+{% block title %} {{category.title}} {% endblock %}
+{% block content %}
+
+<h2 class="my-4">Category: <span class='text-primary'>{{category.title}} Questions</span></h2>
+<h4> Marks: 5 marks</h4>
+<div  class ="img3">
+  {% comment %} <a href="{% url 'chat' %}" data-toggle="tooltip" title="" data-original-title="remove"><img src=" {% static 'img/chatimg.png'%}"
+                                    style="width:30px;height:30px;"></a>
+ </div> {% endcomment %}
+<div class='card my-4'>
+  <h4 class ='card-header'>{{question.question}}? <span class ="timer  float-end"></span></h4>
+  <form method='post'action="">
+     {% csrf_token %}
+    </div> <input type="text" name=" course_id "class="form-control" value="{% for i in course %} {{i.id}} {% endfor %}" >
+    <div class="card-body">
+      
+        {% comment %} <table class="table">
+              <tr>
+                <td><input class='answer'  value"{{question.option1}}"  id="option_1"  name="answer" type="radio"/></td>
+                <th><label for="option_1" > {{question.option1}} </label></th>
+            </tr>
+            <tr>
+                <td><input   class='answer'  value"{{question.option2}}" id="option_2"  name="answer" type="radio"/></td>
+                <th><label for="option_2" >{{question.option2}}</label></th>
+            </tr>
+            <tr>
+                <td ><input   class='answer'  value"{{question.option3}}" id="option_3"  name="answer" type="radio"/></td>
+                <th><label for="option_3" >{{question.option3}}</label></th>
+            </tr>
+            <tr>
+                <td ><input    class='answer' value"{{question.option4}}"  id="option_4"   name="answer" type="radio"/></td>
+                <th><label for="option_4" >{{question.option4}}</label></th>
+            </tr>
+        </table>   {% endcomment %}
+      
+      <table class="table table-bordered">
+          <tr>
+          
+              <td><input    value="{{question.option1}}"  id="option_1"  name="answer" type="radio"/></td>
+              <th><label for="option_1" >a. {{question.option1}} </label></th>
+          </tr>
+          <tr>
+              <td><input    value="{{question.option2}}" id="option_2"  name="answer" type="radio"/></td>
+              <th><label for="option_2" >b.{{question.option2}}</label></th>
+          </tr>
+          <tr>
+              <td ><input       value="{{question.option3}}" id="option_3"  name="answer" type="radio"/></td>
+              <th><label for="option_3" >c.{{question.option3}}</label></th>
+          </tr>
+          <tr>
+              <td ><input      value="{{question.option4}}"  id="option_4"   name="answer" type="radio"/></td>
+              <th><label for="option_4" >d.{{question.option4}}</label></th>
+          </tr>
+         
+          {% comment %} <tr>
+            <th>  Right Answer </th>
+            <th><label >{{question.right_opt}}</label></th>
+        </tr> {% endcomment %}
+          
+      </table>   
+    </div> 
+    <div class="card-footer">
+      <input type="submit" name='skip'    value="skip" class="btn btn-warning  skipBtn"  />
+      <input type="submit" name='submit'   value="submit"  class="btn btn-primary submitBtn"  />
+      <button class="check"> check</button>
+    </div>
+  </form>
+</div>
+<script type="text/javascript"  src="{% static 'jquery-3.5.1.min.js'%}"></script>
+
+
+ <script type='text/javascript'>
+    $(document).ready(function(){
+      $(".submitBtn").on('click',function(){
+          var _checkedAns=$("input[name='answer']:checked").val();
+          if (_checkedAns==undefined){
+              alert('Please select option!');
+              return false;
+          }
+      
+      });
+      var timer2 = "1:00";
+      var interval = setInterval(function() {
+      
+      
+        var timer = timer2.split(':');
+        //by parsing integer, I avoid all extra string processing
+        var minutes = parseInt(timer[0], 10);
+        var seconds = parseInt(timer[1], 10);
+        --seconds;
+          minutes = (seconds < 0) ? --minutes : minutes;
+        if (minutes < 0) clearInterval(interval);
+        seconds = (seconds < 0) ? 59 : seconds;
+        seconds = (seconds < 10) ? '0' + seconds : seconds;
+        //minutes = (minutes < 10) ?  minutes : minutes;
+        
+        $('.timer').html(minutes + ':' + seconds);
+        timer2 = minutes + ':' + seconds;
+        }, 1000);
+        }); 
+ 
+      
+        $(document).ready(function () {
+            $(".check").click(function () {
+                alert("Right Answer  :   {{question.right_opt}}");
+            });
+        });
+        
+    
+  
+  
+</script>  
+
+{% endblock %}
+

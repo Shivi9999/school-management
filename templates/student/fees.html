@@ -1,0 +1,74 @@
+{% extends 'base.html'%}
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == 'success'%}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{message}}
+            
+            </div>
+        {% endif %}
+        {% endfor %}
+    {% endif %}
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row align-items-center">
+        <div class="col">
+            <h4 class="page-title"> Fees Submit </h4>
+        </div>
+        </div>
+    </div>
+
+    <form action="{% url 'fees_submit_save'%}" method="post">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+         <div class="card-body"> {% comment %} <div class="col-12">
+                <h5 class="form-title">
+                <span>Add Subject</span>
+                </h5>
+            </div> {% endcomment %} 
+            {% csrf_token %} 
+            
+            <div class="col-12 col-sm-6">
+                <label class='lbl'>Courses</label>
+                <select class="form-group form-control" name='course' required>
+                <option>Select Course</option> {% for i in course %} <option value='{{i.id}}'>{{i.course}}</option> {% endfor %}
+                </select>
+            </div>
+            <div class="col-12 col-sm-6">
+                <label  class='lbl'>Student Name</label>
+                <select class="form-group form-control" name='student_name'  required>
+                    <option>Select Student Name</option>
+                    {% for i in student_name %}
+                    <option value='{{i.id}}'>{{i.user}}</option>
+                    {% endfor %}
+                </select>
+             </div> 
+            {% comment %} <div class="col-12 col-sm-6">
+                <div class="form-group">
+                     <label class='lbl'>pay Fees</label>
+                      <a href="{% url 'paytm' %}">Paytm</a>
+                           
+                  <input type="text" class="form-control" name="pay_fees" required> 
+                </div>{% endcomment %}
+            
+            <div class="col-12 col-sm-6">
+                <div class="form-group">
+                    <label class='lbl'>pay_category </label>
+                    <input type="text" class="form-control" name="fee_category" required>
+                </div>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Pay Fees</button>
+            </div>
+            <div class="col-12">
+                <a href="{% url 'paypal' %}" class="link-primary"> Paypal</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </form> 
+</div>
+{% endblock %}
